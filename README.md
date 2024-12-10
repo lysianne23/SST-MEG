@@ -79,7 +79,58 @@ Currently the task is set up at the MEG so that the display of the stimuli of in
 - Other words are saved with an amplitude of 32
 - Red fonts are saved with an amplitude of 16
 
-We are recording eye blinks and heart bit 
+We are recording eye blinks (EEG054) and heart bit (EEG055) 
 
 Code: 
 ```
+
+
+
+
+
+### Working Memory task 
+
+Task description:
+
+```
+This is a basic Sternberg task. Each trial begins with a fixation cross displayed for 2 seconds,
+followed by the presentation of a sequence of 4 or 6 letters for another 2 seconds.
+Participants are instructed to memorize the letters during a 3-second delay period.
+After the delay, a probe is shown for 3 seconds,
+participants must indicate whether the letter in the probe was part of the initial sequence.
+If the letter was in the probe, participants have to press the left (green) button
+If the letter was not in the probe, participants have to press the right (blue) button
+The task consists in one block with 80 trials for a total duration of 800 seconds. 
+ - 40 trials with a set size of 4 ;
+ - 40 trials with a set size of 6, 
+
+```
+
+Hypothesis:
+
+
+```
+We expect fronto-parietal activations while participants are performing the task,
+mainly during the delay period of the task when they are actually reharsing the letters;
+and especially on the left hemishphere, and stronger when the task is harder (set size of 6)
+
+
+```
+
+
+Technical informations :
+```
+UADC006 green button
+UADC007 blue button
+We are recording eye blinks (EEG054) and heart bit (EEG055) 
+At the moment I do not know about the task trigger.
+
+```
+
+### Resting state 
+
+
+Task description:
+
+```
+This is only a 10 minutes task with eyes open and a fixation cross for participants to look at
