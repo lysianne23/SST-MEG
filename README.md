@@ -86,10 +86,14 @@ Code:
 
 On Biowulf: 
 module use --append /data/MEGmodules/modulefiles
+
 sinteractive --mem=6G --cpus-per-task=4 --gres=lscratch:50
+
 #module load mne_scripts
 #This command gave me a warning on using mne instead so switching
+
 module load mne
+
 make_meg_bids.py -bids_dir /data/FMRI_SST_Therapy/MEG_BIDS -meg_input_dir /data/FMRI_SST_Therapy/MEG/T026_Baseline -mri_bsight /data/FMRI_SST_Therapy/MEG/T026_T1fs_conform.nii.gz -mri_bsight_elec /data/FMRI_SST_Therapy/MEG/T026_baseline_electrodes.txt -bids_session 01
 
 
