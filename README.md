@@ -100,7 +100,8 @@ module load mne
 make_meg_bids.py -bids_dir /data/FMRI_SST_Therapy/MEG_BIDS -meg_input_dir /data/FMRI_SST_Therapy/MEG/T026_Baseline -mri_bsight /data/FMRI_SST_Therapy/MEG/T026_T1fs_conform.nii.gz -mri_bsight_elec /data/FMRI_SST_Therapy/MEG/T026_baseline_electrodes.txt -bids_session 01 -subjid_input  VLURABJX
 
 
-## Part 2: open the QA modules to make sure all data are there and Launch free surfer (set up 24 hours time)
+## Part 2: Launch Free Surfer
+open the QA modules to make sure all data are there and Launch free surfer (set up 24 hours time)
 sinteractive --mem=6G --cpus-per-task=4 --gres=lscratch:50 --time=24:00:00
 module use --append /data/MEGmodules/modulefiles
 module load mne/dev1.5.1
@@ -111,6 +112,17 @@ and allows to run Free surfer (reconn_all) by clicling on the free surfer Icon.
 This step prints a JOBID , that we can check on Biowulf Dashboad.
 
 Let the script run and go check the log that are saved in BIDS folder to make sure it finished without error.
+
+## Part 3: Launch MRIPrep This step uses more memory so probably exit the previous sinteractive session
+and launch a new one with larger capacity
+
+sinteractive --mem=32G --cpus-per-task=12 --gres=lscratch:100
+module use --append /data/MEGmodules/modulefiles
+module load mne/dev1.5.1
+bids_qa_gui.py -bids_root /data/FMRI_SST_Therapy/MEG/BIDS
+
+Once the GUI open Click on Surf and click on MRIPRep
+and then redo with clicking on Volume (to have both registration)
 
 
 ```
