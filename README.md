@@ -107,8 +107,11 @@ module load mne/dev1.5.1
 bids_qa_gui.py -bids_root /data/FMRI_SST_Therapy/MEG/BIDS
 
 This will open a GUI where we can look at the data, see how many MEG data
-and allows to run Free surfer (reconn_all) by clicling on the free surfer Icon
-\
+and allows to run Free surfer (reconn_all) by clicling on the free surfer Icon.
+This step prints a JOBID , that we can check on Biowulf Dashboad.
+
+Let the script run and go check the log that are saved in BIDS folder to make sure it finished without error.
+
 
 ```
 
