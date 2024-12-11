@@ -81,8 +81,11 @@ Currently the task is set up at the MEG so that the display of the stimuli of in
 
 We are recording eye blinks (EEG054) and heart bit (EEG055) 
 
+```
 Code: 
 ```
+
+## Part 1: Bidsifying the data
 
 On Biowulf: 
 module use --append /data/MEGmodules/modulefiles
@@ -97,6 +100,17 @@ module load mne
 make_meg_bids.py -bids_dir /data/FMRI_SST_Therapy/MEG_BIDS -meg_input_dir /data/FMRI_SST_Therapy/MEG/T026_Baseline -mri_bsight /data/FMRI_SST_Therapy/MEG/T026_T1fs_conform.nii.gz -mri_bsight_elec /data/FMRI_SST_Therapy/MEG/T026_baseline_electrodes.txt -bids_session 01 -subjid_input  VLURABJX
 
 
+## Part 2: open the QA modules to make sure all data are there and Launch free surfer (set up 24 hours time)
+sinteractive --mem=6G --cpus-per-task=4 --gres=lscratch:50 --time=24:00:00
+module use --append /data/MEGmodules/modulefiles
+module load mne/dev1.5.1
+bids_qa_gui.py -bids_root /data/FMRI_SST_Therapy/MEG/BIDS
+
+This will open a GUI where we can look at the data, see how many MEG data
+and allows to run Free surfer (reconn_all) by clicling on the free surfer Icon
+\
+
+```
 
 
 ### Working Memory task 
