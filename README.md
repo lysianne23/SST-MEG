@@ -85,6 +85,17 @@ We are recording eye blinks (EEG054) and heart bit (EEG055)
 Code: 
 ```
 
+Install miniconda: https://www.anaconda.com/download/success
+conda create --override-channels --channel=conda-forge --name=mne15 'mne=1.5' 'numba<0.60' 'python<3.12'
+conda activate mne15
+pip install git+https://github.com/nih-megcore/nih_to_mne
+
+conda activate base
+conda install spyder
+
+## Part 0: Do the trigger first
+
+Event_Marker_Subliminal.py (stored 
 ## Part 1: Bidsifying the data
 
 On Biowulf: 
