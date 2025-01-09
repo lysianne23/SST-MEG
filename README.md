@@ -93,10 +93,16 @@ pip install git+https://github.com/nih-megcore/nih_to_mne
 conda activate base
 conda install spyder
 
-## Part 0: Do the trigger first
+## Part 0: Add the triggers to the data
+Use the script to add the trigger in the meg file
+Open a terminal window and type:
+conda activate mne15
 
-Event_Marker_Subliminal.py (stored 
-## Part 1: Bidsifying the data
+Navigate to the code folder and type:
+./EventMarker_Subliminal.py /Volumes/FMRI_SST_Therapy/MEG/T026_Baseline/VLURABJX_sst_20240708_001.ds
+
+This should generate the markerfile
+## Part 1: Bidsify the data
 
 On Biowulf: 
 module use --append /data/MEGmodules/modulefiles
