@@ -84,12 +84,11 @@ We are recording eye blinks (EEG054) and heart bit (EEG055)
 ```
 Code: 
 ```
-
+If on personal machine: 
 Install miniconda: https://www.anaconda.com/download/success
 conda create --override-channels --channel=conda-forge --name=mne15 'mne=1.5' 'numba<0.60' 'python<3.12'
 conda activate mne15
 pip install git+https://github.com/nih-megcore/nih_to_mne
-
 conda activate base
 conda install spyder
 
@@ -97,6 +96,13 @@ conda install spyder
 Use the script to add the trigger in the meg file
 Open a terminal window and type:
 conda activate mne15
+
+If on biowulf:
+
+sinteractive --mem=6G --cpus-per-task=24 --gres=lscratch:50
+module use --append /data/MEGmodules/modulefiles
+module load mne/dev1.5.1
+
 
 Navigate to the code folder and type:
 ./EventMarker_Subliminal.py /Volumes/FMRI_SST_Therapy/MEG/T026_Baseline/VLURABJX_sst_20240708_001.ds
@@ -106,7 +112,6 @@ This should generate the markerfile
 
 On Biowulf: 
 module use --append /data/MEGmodules/modulefiles
-
 sinteractive --mem=6G --cpus-per-task=4 --gres=lscratch:50
 
 #module load mne_scripts
@@ -114,8 +119,10 @@ sinteractive --mem=6G --cpus-per-task=4 --gres=lscratch:50
 
 module load mne
 
-make_meg_bids.py -bids_dir /data/FMRI_SST_Therapy/MEG_BIDS -meg_input_dir /data/FMRI_SST_Therapy/MEG/T026_Baseline -mri_bsight /data/FMRI_SST_Therapy/MEG/T026_T1fs_conform.nii.gz -mri_bsight_elec /data/FMRI_SST_Therapy/MEG/T026_baseline_electrodes.txt -bids_session 01 -subjid_input  VLURABJX
+make_meg_bids.py -bids_dir /gpfs/gsfs10/users/FMRI_SST_Therapy/MEG/T026_Baseline/bids_dir -bids_id T026 -bids_session 1 -meg_input_dir /gpfs/gsfs10/users/FMRI_SST_Therapy/MEG/T026_Baseline -mri_bsight /gpfs/gsfs10/users/FMRI_SST_Therapy/MEG/T026_T1fs_conform.nii.gz -mri_bsight_elec /gpfs/gsfs10/users/FMRI_SST_Therapy/MEG/T026_baseline_electrodes.txt -subjid_input VLURABJX
 
+OR IF YOU WANT TO USE THE GUI:
+make_meg_bids_gui.py 
 
 ## Part 2: Launch Free Surfer
 open the QA modules to make sure all data are there and Launch free surfer (set up 24 hours time)
