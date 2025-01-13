@@ -108,6 +108,7 @@ Navigate to the code folder and type:
 ./EventMarker_Subliminal.py /Volumes/FMRI_SST_Therapy/MEG/T026_Baseline/VLURABJX_sst_20240708_001.ds
 
 This should generate the markerfile
+
 ## Part 1: Bidsify the data
 
 On Biowulf: 
@@ -147,6 +148,34 @@ bids_qa_gui.py -bids_root /data/FMRI_SST_Therapy/MEG/BIDS
 
 Once the GUI open Click on Surf and click on MRIPRep
 and then redo with clicking on Volume (to have both registration)
+
+## Part 4: Cleaning the data:
+Here we want to remove bad epochs and bad channels so we need to plot the raw data. 
+On Biowulf
+
+open a terminal window and type:
+ipython
+
+then create a variable called filename, that leads to the MEG task FOLDER in BIDS format
+filename = '/data/FMRI_SST_Therapy/MEG/BIDS/sub-T026/ses-1/meg/sub-T026_ses-1_task-sst_run-01_meg.ds'
+
+raw = mne.io.read_raw_ctf(filename, system_clock='ignore')
+
+raw.plot()
+
+Once the plot is open go through it and use the annotations and name "BAD_epoch" all noisy epochs
+if a channel is bad, just click on it and it will be greyed out
+
+Once done, we need to save the cleaned file as a .fif file:
+raw.save('/data/FMRI_SST_Therapy/MEG/BIDS/sub-T026/ses-1/meg/sub-T026_ses-1_task-sst_run-01_meg.ds/sub-T026_ses-
+    ...: 1_task-sst_run-01_meg_cleaned.fif')
+
+and let's plot it to make sure it worked
+filename = '/data/FMRI_SST_Therapy/MEG/BIDS/sub-T026/ses-1/meg/sub-T026_ses-1_task-sst_run-01_meg.ds/sub-T026_se
+    ...: s-1_task-sst_run-01_meg_cleaned.fif'
+
+raw = mne.io.read_raw_fif(filename)
+raw.plot()
 
 
 ```
