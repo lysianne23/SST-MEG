@@ -5,7 +5,8 @@
 ###
 #Description : this code is to set up event marker in our Subliminal task 
 #currently each stimuli of interest is marked as a trigger of different amplitude on channel UPPT001
-# The amplitude is set at 16 (for red fonts) , 32 (for other words), or 64 (for subject's words)
+#The amplitude is set at 16 (for red fonts) , 32 (for other words), or 64 (for subject's words)
+#Participant is asked to press a button when the red font appears (analogue channel)
 
 """
 import pandas as pd
@@ -24,7 +25,6 @@ from nih2mne.utilities.markerfile_write import main as writemarkerfile
 ### DEFINE THE FILENAME ##
 #filename = '/Volumes/MEG/T026_Baseline/VLURABJX_sst_20240708_001.ds'
 #filename = '~/Desktop/VLURABJX_sst_20240708_001.ds'
-#filename = '/Users/beynellc/Desktop/VLURABJX_sst_20240708_001.ds'
 filename = sys.argv[1]
 
  ################ Code digital MEG events  #####################
@@ -54,4 +54,4 @@ writemarkerfile(parse_response, filename)
  ##### This allows to see the plot and check which channels the button press 
 raw = mne.io.read_raw_ctf(filename, system_clock='ignore')
 raw.pick_types(misc=True,meg=False)
-raw.plot()
+raw.plot(block=True)
